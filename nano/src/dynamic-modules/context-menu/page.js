@@ -1,0 +1,1 @@
+"use strict";var i18n=require("../i18n"),branding=require("../branding"),initer=require("../utils/initer");initer([branding,i18n],function(){document.title=i18n.message("context-menu.page-title")});

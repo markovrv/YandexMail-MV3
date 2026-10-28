@@ -1,0 +1,43 @@
+{
+   "manifest_version": 3,
+   "name": "__MSG_name__",
+   "description": "__MSG_description__",
+   "version": "1",
+   "default_locale": "ru",
+   "minimum_chrome_version": "116",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdFoMNJ/2g4LMFaXtw0/lLPHVau26FeI/4eoB+zLV3eP2o9+ovytNtnSIt3l19MP/Nm9jvUtLPZub7UpKwpziQhuOO8D2Hd+V1BP0Fxplv8qIeweOEmHGAPJlp4tQtnILFuWOhN4yz6I1n4+t9uNJ/dHCirKFQsHxXSF4wQrLeCwIDAQAB",
+   "icons": {
+      "16": "logo/chrome/ya_16_ru.png",
+      "48": "logo/chrome/mail_48.png",
+      "128": "logo/chrome/mail_128.png"
+   },
+   "background": {
+      "service_worker": "mv3/sw.js"
+   },
+   "action": {
+      "default_icon": "button/img/mail_no_connect.png"
+   },
+   "options_page": "options/options.html",
+   "permissions": [ "contextMenus", "webRequest", "webNavigation", "cookies", "bookmarks", "history", "unlimitedStorage", "management", "tabs", "notifications", "idle", "offscreen" ],
+   "host_permissions": [ "http://*/*", "https://*/*" ],
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "includes/nano-includes.min.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "js": [ "includes/nano-includes-frames.min.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": false,
+      "js": [ "includes/mail-includes.min.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "web_accessible_resources": [ {
+      "resources": [ "balloon/mail/img/icon.png", "logo/*", "includes/*", "common/*" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ]
+}
